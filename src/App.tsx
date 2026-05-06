@@ -133,7 +133,7 @@ export default function App() {
                 <StatsCard 
                   title="Vendido no Mês" 
                   value={formatCurrency(stats.salesMonthTotal)} 
-                  subvalue="Referente a Maio"
+                  subvalue={`Referente a ${format(new Date(), 'MMMM', { locale: ptBR })}`}
                   icon={TrendingUp}
                   color="bg-emerald-500"
                 />
@@ -645,7 +645,7 @@ function GoalsPage({ data, onAddGoal, onDeleteGoal, categories, workingDays }: a
                 <div>
                   <h3 className="text-xl font-bold text-slate-800">{goal.name}</h3>
                   <div className="flex items-center gap-2 mt-1">
-                    <span className="text-xs font-semibold text-slate-400">Restaurante: {cat?.name || 'Geral'}</span>
+                    <span className="text-xs font-semibold text-slate-400">Categoria: {cat?.name || 'Geral'}</span>
                     <span className="text-xs text-slate-300">•</span>
                     <span className="text-xs font-semibold text-slate-400">{format(parseISO(goal.startDate), 'dd/MM')} - {format(parseISO(goal.endDate), 'dd/MM')}</span>
                   </div>

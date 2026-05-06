@@ -36,16 +36,13 @@ jobs:
           java-version: '17'
           distribution: 'zulu'
 
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
 
       - name: Build APK with Gradle
         run: |
           cd android
-          if [ ! -f "gradle/wrapper/gradle-wrapper.jar" ]; then
-            echo "Gradle wrapper JAR missing, forcing generation..."
-            gradle wrapper
-          fi
+          gradle wrapper
           chmod +x gradlew
           ./gradlew assembleDebug
 
