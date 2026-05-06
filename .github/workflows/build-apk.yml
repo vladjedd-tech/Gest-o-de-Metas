@@ -42,6 +42,10 @@ jobs:
       - name: Build APK with Gradle
         run: |
           cd android
+          if [ ! -f "gradle/wrapper/gradle-wrapper.jar" ]; then
+            echo "Gradle wrapper JAR missing, forcing generation..."
+            gradle wrapper
+          fi
           chmod +x gradlew
           ./gradlew assembleDebug
 
